@@ -1,3 +1,14 @@
+import { mydbAwait } from "../../lib/db"
+
 export default async function handler(req, res) {
-    return res.json([{ "id": "test01", "name": "tt1" }, { "id": "test02", "name": "tt2" }]);
+    let cmd = "select id, name from d_user"
+    let resultes = await mydbAwait.awaitQuery(cmd)
+    let data = await resultes.map(res => {
+        return {
+            'id': res.id,
+            'name': res.name
+        }
+    })
+
+    return res.json(data);
 }

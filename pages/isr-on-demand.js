@@ -1,6 +1,6 @@
 // incremental static generation
 import { YOUR_API_URL } from '../lib/api';
-
+import { mydbAwait } from '../lib/db';
 export default function IncrementalStaticRegenerationOnDemand({ data }) {
   return (
     <>
@@ -15,9 +15,14 @@ export default function IncrementalStaticRegenerationOnDemand({ data }) {
 // It may be called again, on a serverless function, if
 // the api endpoint e.g. api/revalidate get's pinged.
 export async function getStaticProps() {
-  const res = await fetch(YOUR_API_URL);
-  const data = await res.json();
-
+  let cmd = "select id, name from d_user"
+  let resultes = await mydbAwait.awaitQuery(cmd)
+  let data = await resultes.map( res => {
+    return {
+      'id':res.id,
+      'name': res.name
+    }
+  })
   return {
     props: {
       data, // will be passed to the page component as props

@@ -1,8 +1,16 @@
-# Next.js v10 Data Fetching Boilerplate
+### Next.js渲染特性
 
-In this repo you will find all the data fetching methods like:
-Server sider rendering, static site generation, incremental static regeneration on basic react client-side rendering.
+SSR : 请求时，实时渲染。
 
-The fetching methods are getServerSideProps, getStaticProps. The old method was getInitialProps.
+SSG：编译时，生成。
 
-In another video, we will talk about what getStaticPaths does.
+CSR：在请求时客户端实时渲染。
+
+ISR：编译时和间隔固定时间刷新（自动刷新）。
+
+unstable_revalidate()：Next.js现在公开了一个unstable_revalidate()函数，允许您重新验证每个单独使用 getStaticProps 的页面 （手动刷新）
+
+
+
+
+
