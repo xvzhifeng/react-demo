@@ -9,6 +9,6 @@ export default async function handler(req, res) {
             'name': res.name
         }
     })
-
+    console.log(data)
     return res.json(data);
 }
