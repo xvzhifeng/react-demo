@@ -6,7 +6,7 @@ export default function ClientSideRendered() {
   const [state, setState] = useState([]);
 
   async function getData() {
-    const res = await fetch(YOUR_API_URL);
+    const res = await fetch("/api/data01");
     const data = await res.json();
     setState(data);
   }
