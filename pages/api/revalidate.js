@@ -4,6 +4,7 @@ export default async function handler(req, res) {
       query: { page },
       method,
   } = req
+  console.log(page)
 
   switch (method) {
       case 'GET':

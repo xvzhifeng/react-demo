@@ -1,6 +1,7 @@
 // client side rendered
 import { useEffect, useState } from 'react';
 import { YOUR_API_URL } from '../lib/api';
+import Layout from '../components/layout';
 
 export default function ClientSideRendered() {
   const [state, setState] = useState([]);
@@ -19,12 +20,12 @@ export default function ClientSideRendered() {
 
   return (
     <>
-    <div>
-      csr
-    </div>
-      {state.map((e) => (
-        <h2 key={e.id}>{e.name}</h2>
-      ))}
+      <Layout>
+        {state.map((e) => (
+          <h2 key={e.id}>{e.name}</h2>
+        ))}
+      </Layout>
+
     </>
   );
 }

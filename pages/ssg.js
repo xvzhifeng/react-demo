@@ -1,12 +1,16 @@
 // static site generation
+import Layout from '../components/layout';
 import { YOUR_API_URL } from '../lib/api';
 import { mydbAwait } from '../lib/db';
 export default function StaticSiteGeneration({ data }) {
   return (
     <>
-      {data.map((e) => (
-        <h2 key={e.id}>{e.name}</h2>
-      ))}
+      <Layout>
+        {data.map((e) => (
+          <h2 key={e.id}>{e.name}</h2>
+        ))}
+      </Layout>
+
     </>
   );
 }
@@ -19,9 +23,9 @@ export async function getStaticProps() {
   // const data = await res.json();
   let cmd = "select id, name from d_user"
   let resultes = await mydbAwait.awaitQuery(cmd)
-  let data = await resultes.map( res => {
+  let data = await resultes.map(res => {
     return {
-      'id':res.id,
+      'id': res.id,
       'name': res.name
     }
   })
